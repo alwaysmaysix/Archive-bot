@@ -35,6 +35,27 @@ def up_progress(current, total, msg: Message):
     """ edit status-msg with progress of the uploading """
     msg.edit(f"**Upload progress: {current * 100 / total:.1f}%**")
 
+def process_command(command):
+    # Split the command into command name and arguments
+    parts = command.split()
+    command_name = parts[0]
+    args = parts[1:]
+
+    # Process the command based on the command name
+    if command_name == "/zip":
+        # Assuming the arguments after the command specify the directory path and output file path
+        directory_path = args[0]
+        output_file_path = args[1]
+
+        # Call the function to create the zip archive
+        create_zip_archive(directory_path, output_file_path)
+
+def create_zip_archive(directory_path, output_file_path):
+    with zipfile.ZipFile(output_file_path, 'w') as zipf:
+        for root, dirs, files in os.walk(directory_path):
+            for file in files:
+                file_path = os.path.join(root, file)
+                zipf.write(file_path, os.path.relpath(file_path, directory_path))
 
 # ========= MSG class =========
 class Msg:
