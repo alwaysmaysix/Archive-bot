@@ -4,7 +4,7 @@ from os import mkdir
 
 app_id = '18443762'
 app_key = 'a14eb15b00ffaa1f54a7bf93cd521e92'
-token =  '6214452248:AAFs_yAKjPGeLyI58u_Q_86e1JrA_aiB-hQ'
+token =  '5552172781:AAEjI-y92ZYMRajYz4y1EnvrQ4HAwEd2ZIA'
 
 app = Client("zipBot", app_id, app_key, bot_token=token)
 
